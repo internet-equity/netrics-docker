@@ -20,6 +20,6 @@ With this repository, you can now install Netrics in a Docker container and run 
 > docker pull marcwitasee/netrics
 > ```
 5. Start a container with the image and a volume mounted to receive data.
-```bash
-docker run -d --name netrics-container -v ./volumes/netrics/result:/home/netrics/result netrics:latest
-```
+> ```bash
+> docker run -d --name netrics-container -v ./volumes/netrics/result:/home/netrics/result netrics:latest
+> ```
