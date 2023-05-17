@@ -21,11 +21,11 @@ With this repository, you can now install Netrics in a Docker container and run 
 > ```
 5. Start a container with the image and a volume mounted to receive data.
 > ```bash
-> docker run -d --name netrics-container -v ./volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
+> docker run -d --name netrics-container -v absolute/path/to/netrics-docker/volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
 > ```
 6. Check the logs from the container that you started to confirm that the software is running:
 > ```bash
->docker logs ucinternetequity/netrics:latest
+>docker logs netrics-container
 >```
 7. Check the local directory where the files are stored to confirm that data is flowing from the container.
 > ```bash
