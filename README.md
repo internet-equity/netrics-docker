@@ -39,9 +39,8 @@ With this repository, you can now install Netrics in a Docker container and run 
 >docker run -it marcwitasee/netrics:latest bash
 >$ netrics -h
 >```
-You can now access Netrics software directly.
 
-> **☝️ Note**
+> ### **☝️ Note**
 >
 > Running the container interactively in this manner will not automatically start the Netrics daemon (and no measurements will take place). If you want to run the container to start Netrics and see the measurement logs in your current shell, run this command instead:
 > ```
@@ -50,6 +49,20 @@ You can now access Netrics software directly.
 > ℹ️  time="2023-05-17 15:56:00.102" level="info" event="3eGp1TWzujwe" session="3eGp1TWA3gkb" sched="tiered-tenancy" task="hops-scamper" msg="skipped: suppressed by if/unless condition"
 > ℹ️  time="2023-05-17 15:56:00.542" level="info" event="3eGp1UIhDdRC" session="3eGp1TWA3gkb" task="ip" status="OK" exitcode=0
 > ```
+
+With this set up, you will be able to run Netrics continuously to collect data on network performance from your computer. You can also interact with the Netrics software directly through the CLI interface on the container.
+
+Read more below to learn more about reconfiguring the Docker image or the Netrics software using this repository.
+
+> ### 🙏 **Feedback**
+>
+> If you find any issues with this repository or with the Netrics software, please report them to us! We'd also love to hear more about your experience using Netrics and any ideas you might have to make it better.
+>
+> Please send us a note at `broadband-equity@lists.uchicago.edu` or get in touch with us through one of the options on our [feedback page](https://internetequity.org/feedback/submitting-feedback.html).
+
+## Receiving Data from Netrics Container
+
+You can run the Netrics docker container with a mounted volume to transfer data from the container to your local computer. See additional details about how to do this [here](https://github.com/internet-equity/netrics-docker/blob/main/volumes/netrics/result/README.md).
 
 ## Rebuilding the Image
 
