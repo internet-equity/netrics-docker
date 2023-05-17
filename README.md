@@ -142,4 +142,4 @@ Appropriate parameters are defined and controlled by the binary that runs the ta
 
 ### Adding a New Measurement
 
-See the documentation on the Netrics repository about [adding a new measurement](https://github.com/internet-equity/netrics#development). We will have a short guide on adding measurements ready soon!
+Read the documentation [here](./config/measurements/README.md) to learn how to add new measurements Netrics when running it with this repository and docker. See the general documentation on the Netrics repository about [adding a new measurement](https://github.com/internet-equity/netrics#adding-builtins) to the framework.

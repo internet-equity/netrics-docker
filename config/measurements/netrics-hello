@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# For this simple example we're not interested in detailed ping data
+# (and we don't want it echo'd as a "result") -- discard it.
+
+ping -c 1 -w 1 example.com > /dev/null
+
+# Rather, determine our result according to ping's own exit codes.
+
+case $? in
+0)
+echo '{"example.com": "FAST ENOUGH"}'
+exit 0
+;;
+1)
+echo '{"example.com": "TOO SLOW"}'
+exit 0
+;;
+*)
+exit 1
+;;
+esac

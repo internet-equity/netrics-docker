@@ -33,6 +33,8 @@ RUN mkdir -p /home/netrics/result
 # Copy local configuration files (instead of using defaults)
 COPY ./config/measurements.yaml /home/netrics/.config/netrics/measurements.yaml
 COPY ./config/defaults.yaml /home/netrics/.config/netrics/defaults.yaml
+COPY ./config/measurements/netrics-* /home/netrics/
+RUN cp /home/netrics/netrics-* /home/netrics/.local/bin/
 
 # Run Netrics daemon
 CMD netrics.d --foreground
