@@ -15,17 +15,17 @@ With this repository, you can now install Netrics in a Docker container and run 
 > git clone https://github.com/internet-equity/netrics-docker.git
 > ```
 3. Enter the cloned repository (`cd netrics-docker`).
-4. Pull the latest Netrics Docker image from [Docker Hub](https://hub.docker.com/r/marcwitasee/netrics).
+4. Pull the latest Netrics Docker image from [Docker Hub](https://hub.docker.com/r/ucinternetequity/netrics).
 > ```bash
-> docker pull marcwitasee/netrics
+> docker pull ucinternetequity/netrics
 > ```
 5. Start a container with the image and a volume mounted to receive data.
 > ```bash
-> docker run -d --name netrics-container -v ./volumes/netrics/result:/home/netrics/result marcwitasee/netrics:latest
+> docker run -d --name netrics-container -v ./volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
 > ```
 6. Check the logs from the container that you started to confirm that the software is running:
 > ```bash
->docker logs marcwitasee/netrics:latest
+>docker logs ucinternetequity/netrics:latest
 >```
 7. Check the local directory where the files are stored to confirm that data is flowing from the container.
 > ```bash
@@ -36,7 +36,7 @@ With this repository, you can now install Netrics in a Docker container and run 
 >```
 8. If you want to run the container interactively and use Netrics through the CLI interface (with a shell open in the container), run:
 > ```bash
->docker run -it marcwitasee/netrics:latest bash
+>docker run -it ucinternetequity/netrics:latest bash
 >$ netrics -h
 >```
 
@@ -44,7 +44,7 @@ With this repository, you can now install Netrics in a Docker container and run 
 >
 > Running the container interactively in this manner will not automatically start the Netrics daemon (and no measurements will take place). If you want to run the container to start Netrics and see the measurement logs in your current shell, run this command instead:
 > ```
-> docker run -d --name netrics-test -v ./volumes/netrics/result:/home/netrics/result marcwitasee/netrics:latest
+> docker run -d --name netrics-test -v ./volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
 > ℹ️  time="2023-05-17 15:55:14.990" level="info" event="3eGp0Cw51tos" session="3eGp0Cw54puN" execution_count=0 scheduled_next=2023-05-17T15:56:00
 > ℹ️  time="2023-05-17 15:56:00.102" level="info" event="3eGp1TWzujwe" session="3eGp1TWA3gkb" sched="tiered-tenancy" task="hops-scamper" msg="skipped: suppressed by if/unless condition"
 > ℹ️  time="2023-05-17 15:56:00.542" level="info" event="3eGp1UIhDdRC" session="3eGp1TWA3gkb" task="ip" status="OK" exitcode=0
@@ -118,7 +118,7 @@ The `param` key in the configuration provides inputs to the task that Netrics wi
 The actual module run by the `ping` command is another executable that comes installed with Netrics. Netrics has [built-in measurements](https://github.com/internet-equity/netrics#built-in-measurements) developed by researchers at the Internet Equity Initiative that a user can run out of the box.
 
 ```bash
-docker run -it marcwitasee/netrics bash
+docker run -it ucinternetequity/netrics bash
 $ ls .local/bin | grep netrics
 netrics
 netrics-dev
