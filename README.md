@@ -11,44 +11,58 @@ With this repository, you can now install Netrics in a Docker container and run 
 
 1. Install the `docker` CLI. See the installation appropriate for your system [here](https://docs.docker.com/get-docker/).
 2. Once you have the `docker` CLI installed, clone this repository to your local file system:
-> ```bash
-> git clone https://github.com/internet-equity/netrics-docker.git
-> ```
+    > ```bash
+    > git clone https://github.com/internet-equity/netrics-docker.git
+    > ```
 3. Enter the cloned repository (`cd netrics-docker`).
 4. Pull the latest Netrics Docker image from [Docker Hub](https://hub.docker.com/r/ucinternetequity/netrics).
-> ```bash
-> docker pull ucinternetequity/netrics
-> ```
-5. Start a container with the image and a volume mounted to receive data.
-> ```bash
-> docker run -d --name netrics-container -v absolute/path/to/netrics-docker/volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
-> ```
-6. Check the logs from the container that you started to confirm that the software is running:
-> ```bash
->docker logs netrics-container
->```
-7. Check the local directory where the files are stored to confirm that data is flowing from the container.
-> ```bash
->ls volumes/netrics/result
->README.md
->result-1684336440-20230517T151400-dns-latency.json
->result-1684336520-20230517T151519-speed-ookla.json
->```
-8. If you want to run the container interactively and use Netrics through the CLI interface (with a shell open in the container), run:
-> ```bash
->docker run -it ucinternetequity/netrics:latest bash
->$ netrics -h
->```
+    > ```bash
+    > docker pull ucinternetequity/netrics
+    > ```
+5. At this point, you can try using one of the `run*` scrips in the repository to build and launch a container with Netrics installed.
 
-> ### **☝️ Note**
->
-> Running the container interactively in this manner will not automatically start the Netrics daemon (and no measurements will take place). If you want to run the container to start Netrics and see the measurement logs in your current shell, run this command instead:
-> ```
-> docker run -d --name netrics-test -v ./volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
-> ℹ️  time="2023-05-17 15:55:14.990" level="info" event="3eGp0Cw51tos" session="3eGp0Cw54puN" execution_count=0 scheduled_next=2023-05-17T15:56:00
-> ℹ️  time="2023-05-17 15:56:00.102" level="info" event="3eGp1TWzujwe" session="3eGp1TWA3gkb" sched="tiered-tenancy" task="hops-scamper" msg="skipped: suppressed by if/unless condition"
-> ℹ️  time="2023-05-17 15:56:00.542" level="info" event="3eGp1UIhDdRC" session="3eGp1TWA3gkb" task="ip" status="OK" exitcode=0
-> ```
+    To run a detached container that outputs Netrics logs to the terminal, use the `run-detached.sh` script:
+    >```bash
+    > ./run-detached.sh ucinternetequity/netrics .
+    >```
+
+    To run an interactive container that launches a shell in the container, use the `run-interactive.sh` script:
+    >```bash
+    > ./run-interactive.sh ucinternetequity/netrics .
+    >```
+
+    If you want to walk through the steps to start a container, continue with the rest of the quick start walkthrough.
+
+5. Start a container with the image and a volume mounted to receive data.
+    > ```bash
+    > docker run -d --name netrics-container -v absolute/path/to/netrics-docker/volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
+    > ```
+6. Check the logs from the container that you started to confirm that the software is running:
+    > ```bash
+    >docker logs netrics-container
+    >```
+7. Check the local directory where the files are stored to confirm that data is flowing from the container.
+    > ```bash
+    >ls volumes/netrics/result
+    >README.md
+    >result-1684336440-20230517T151400-dns-latency.json
+    >result-1684336520-20230517T151519-speed-ookla.json
+    >```
+8. If you want to run the container interactively and use Netrics through the CLI interface (with a shell open in the container), run:
+    > ```bash
+    >docker run -it ucinternetequity/netrics:latest bash
+    >$ netrics -h
+    >```
+
+    > ### **☝️ Note**
+    >
+    > Running the container interactively in this manner will not automatically start the Netrics daemon (and no measurements will take place). If you want to run the container to start Netrics and see the measurement logs in your current shell, run this command instead:
+    > ```
+    > docker run -d --name netrics-test -v ./volumes/netrics/result:/home/netrics/result ucinternetequity/netrics:latest
+    > ℹ️  time="2023-05-17 15:55:14.990" level="info" event="3eGp0Cw51tos" session="3eGp0Cw54puN" execution_count=0 scheduled_next=2023-05-17T15:56:00
+    > ℹ️  time="2023-05-17 15:56:00.102" level="info" event="3eGp1TWzujwe" session="3eGp1TWA3gkb" sched="tiered-tenancy" task="hops-scamper" msg="skipped: suppressed by if/unless condition"
+    > ℹ️  time="2023-05-17 15:56:00.542" level="info" event="3eGp1UIhDdRC" session="3eGp1TWA3gkb" task="ip" status="OK" exitcode=0
+    > ```
 
 With this set up, you will be able to run Netrics continuously to collect data on network performance from your computer. You can also interact with the Netrics software directly through the CLI interface on the container.
 
