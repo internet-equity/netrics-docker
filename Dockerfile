@@ -1,5 +1,11 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:22.04
+FROM golang:1.17-bullseye AS build
+RUN apt-get update
+RUN apt-get install -y git
+ENV GO111MODULE=on
+RUN go get github.com/neubot/dash/cmd/dash-client@master
+RUN go get github.com/m-lab/ndt7-client-go/cmd/ndt7-client
+RUN go get github.com/m-lab/ndt5-client-go/cmd/ndt5-client
 
 # install app dependencies
 RUN apt-get update && apt-get upgrade -y
