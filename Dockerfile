@@ -2,7 +2,7 @@
 # install app dependencies
 FROM golang:1.17-bullseye AS build
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y ca-certificates sudo apt-utils cron net-tools traceroute iputils-ping dnsutils nmap logrotate python3 python3-pip iproute2 curl git
+RUN apt-get install -y ca-certificates sudo apt-utils cron net-tools traceroute iputils-ping dnsutils nmap logrotate python3 python3-pip iproute2 curl git scamper
 
 FROM build as modules
 # install ndt7-client with Go
